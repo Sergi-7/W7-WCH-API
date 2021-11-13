@@ -9,7 +9,6 @@ const registerUser = async (req, res, next) => {
   if (user) {
     const error = new Error("Username already exists");
     error.code = 400;
-    console.log(error);
     next(error);
   } else {
     newUser.friends = [];
