@@ -5,18 +5,22 @@ require("dotenv").config();
 
 const registerUser = async (req, res, next) => {
   const newUser = req.body;
+  console.log(newUser);
   const user = await User.findOne({ username: newUser.username });
+  console.log(user);
   if (user) {
     const error = new Error("Username already exists");
     error.code = 400;
     next(error);
   } else {
+    console.log("hi");
+    newUser.name = newUser.username;
     newUser.friends = [];
     newUser.enemies = [];
     newUser.photo = "";
     newUser.bio = "";
-    newUser.password = await bcrypt.hash(newUser.password, 100);
-    User.create(newUser);
+    newUser.password = await bcrypt.hash(newUser.password, 10);
+    await User.create(newUser);
     res.json(newUser);
   }
 };

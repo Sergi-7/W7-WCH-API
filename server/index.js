@@ -3,6 +3,7 @@ const debug = require("debug")("users:server");
 const chalk = require("chalk");
 const morgan = require("morgan");
 const cors = require("cors");
+const userRoutes = require("./routes/userRoutes");
 
 const app = express();
 
@@ -29,5 +30,7 @@ const initializeServer = (port) =>
 app.use(morgan("dev"));
 app.use(cors());
 app.use(express.json());
+
+app.use("/users", userRoutes);
 
 module.exports = { app, initializeServer };
