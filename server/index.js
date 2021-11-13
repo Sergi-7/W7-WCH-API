@@ -9,7 +9,7 @@ const app = express();
 const initializeServer = (port) =>
   new Promise((resolve, reject) => {
     const server = app.listen(port, () => {
-      debug(chalk.yellow(`Listen to port ${port}`));
+      debug(chalk.yellow(`Listening to port ${port}`));
       resolve(server);
     });
 
