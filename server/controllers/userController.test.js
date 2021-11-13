@@ -1,8 +1,9 @@
-const { registerUser } = require("./userController");
+const { registerUser, loginUser } = require("./userController");
 const User = require("../../database/models/user");
 
 jest.mock("../../database/models/user");
 jest.mock("bcrypt");
+jest.mock("jsonwebtoken");
 
 describe("Given a registerUser controller", () => {
   describe("When it receives a request with an already created username", () => {
@@ -43,5 +44,11 @@ describe("Given a registerUser controller", () => {
         expect(res.json).toHaveBeenCalledWith(req.body);
       });
     });
+  });
+});
+
+describe("Given a loginUser controller", () => {
+  describe("When it receives a request with a non existant user", () => {
+    test("Then it should call the next method with an error", async () => {});
   });
 });
