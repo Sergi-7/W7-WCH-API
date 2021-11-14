@@ -5,15 +5,14 @@ require("dotenv").config();
 
 const registerUser = async (req, res, next) => {
   const newUser = req.body;
-  console.log(newUser);
+
   const user = await User.findOne({ username: newUser.username });
-  console.log(user);
+
   if (user) {
     const error = new Error("Username already exists");
     error.code = 400;
     next(error);
   } else {
-    console.log("hi");
     newUser.name = newUser.username;
     newUser.friends = [];
     newUser.enemies = [];
