@@ -16,4 +16,4 @@ const userRegisterSchema = {
     bio: Joi.string().optional(),
   }),
 };
-module.exports = { userLoginSchema };
+module.exports = { userLoginSchema, userRegisterSchema };
