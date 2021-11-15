@@ -4,6 +4,7 @@ const chalk = require("chalk");
 const morgan = require("morgan");
 const cors = require("cors");
 const userRoutes = require("./routes/userRoutes");
+const socialsRoutes = require("./routes/socialsRoutes");
 
 const app = express();
 
@@ -32,5 +33,6 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 app.use("/users", userRoutes);
+app.use("/socials", socialsRoutes);
 
 module.exports = { app, initializeServer };
